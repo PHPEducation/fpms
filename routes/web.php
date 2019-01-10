@@ -10,9 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'Auth\LoginController@showLoginForm');
 
 Auth::routes();
 //Social Login
@@ -23,16 +21,16 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group([
     'as' => 'admin.',
-    'prefix' => 'admin', 
-    'namespace' => 'Admin', 
+    'prefix' => 'admin',
+    'namespace' => 'Admin',
     'middleware' => ['auth', 'admin']], function(){
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 });
 
 Route::group([
     'as' => 'user.',
-    'prefix' => 'user', 
-    'namespace' => 'User', 
+    'prefix' => 'user',
+    'namespace' => 'User',
     'middleware' => ['auth', 'user']], function(){
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 

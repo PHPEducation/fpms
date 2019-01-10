@@ -61,6 +61,8 @@ mix.copy('resources/assets/template/img/40px.png',
     'public/assets/css/images/jstree/40px.png');
 mix.copy('resources/assets/template/img/throbber.gif',
     'public/assets/css/images/jstree/throbber.gif');
+mix.copy('resources/assets/template/img/default.jpg',
+    'public/assets/auth/img/default.jpg');
 
 mix.copy('resources/assets/template/fonts/',
     'public/assets/css/fonts/');

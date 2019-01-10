@@ -11,6 +11,7 @@ use Brian2694\Toastr\Facades\Toastr;
 use App\Http\Requests\DocumentStoreRequest;
 use App\Jobs\MakeSingleFolder;
 use Illuminate\Support\Facades\Storage;
+use App\Jobs\MakeFolderProject;
 use App\Jobs\MakeSingleFile;
 use App\Jobs\UpdateLinkDocument;
 use App\Jobs\DeleteSingleFile;
@@ -97,6 +98,8 @@ class DocumentController extends Controller
     {
         $project = $this->project->find($id);
 
+        MakeFolderProject::dispatch($project);
+        
         $documentVersion = $this->documentVersion->store([
             'name' => $project->name . ' v1',
             'project_id' => $project->id,

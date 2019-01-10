@@ -12,7 +12,6 @@ use Brian2694\Toastr\Facades\Toastr;
 use Intervention\Image\Facades\Image;
 use Illuminate\Http\File;
 use App\Helper\FileHelper;
-use App\Jobs\MakeFolderProject;
 
 class ProjectController extends Controller
 {
@@ -91,8 +90,6 @@ class ProjectController extends Controller
         ]);
 
         $project = $this->project->store($data);
-        
-        MakeFolderProject::dispatch($project);
 
         $this->project->attachPositionUser(
             $project->id,
